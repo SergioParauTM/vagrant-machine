@@ -26,11 +26,6 @@ Vagrant.configure("2") do |config|
    config.vm.hostname = "pruebahost"
     config.vm.provision "shell", path: "provision.sh"
 
-  #deshabilitamos la url por defecto de la carpeta compartida y añadimos una url nuestra
-
-    config.vm.synced_folder "/Users/sergioparau/Documents/DAW/Despliegue de aplicaciones web", "/vagrant", disabled: true
-    config.vm.synced_folder "/Applications/XAMPP/xamppfiles/htdocs", "/var/www"
-
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
