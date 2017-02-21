@@ -12,7 +12,14 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "hashicorp/precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.hostname = "wordpress"
+  config.vm.network "public_network",ip:"192.168.1.8"
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.provision "shell", path: "provision.sh"
+  config.vm.synced_folder ".", "/var/www,  "/vagrant", disabled: true
+  config.vm.synced_folder ".", "/var/www"
+
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
